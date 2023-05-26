@@ -23,3 +23,14 @@ def removing_empty(filename):
     return new_list
 
 
+def type_payment(pay):
+    if 'счёт' in pay.upper():
+        return f'{pay[:5]}**{pay[-2:]}'
+    else:
+        payment_type: str = f'{pay.split()[len(pay.split()) - 1]}'
+        card_type = f'{pay.replace(f" {payment_type}", "")}'
+        payment_type = payment_type[:-10] + '** **** ' + payment_type[12:]
+        payment_type = f'{card_type} {payment_type[:4]} {payment_type[4:]}'
+        return payment_type
+
+
