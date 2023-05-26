@@ -42,3 +42,20 @@ def sorted_date(file):
     return date_[0:5]
 
 
+def get_five_operations(file):
+    count = 0
+    for i in file:
+        if count == 5:
+            return
+        if len(i) > 0 and i['state'] == 'EXECUTED':
+            datetime_str = i['date'].split('T')[0]
+            datetime_object = datetime.strptime(datetime_str, '%Y-%m-%d').date().strftime('%d.%m.%Y')
+            cost = f'{i["operationAmount"]["amount"]} {i["operationAmount"]["currency"]["name"]}'
+            print(f'{datetime_object} {i["description"]}')
+            if 'открытие' in i['description'].lower():
+                print(f'{type_payment(i["to"])}')
+            else:
+                print(f'{type_payment(i["from"])} -> {type_payment(i["to"])}')
+            print(cost)
+
+
