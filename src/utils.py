@@ -11,3 +11,15 @@ def load_jsonfile(filename):
         return json.loads(file.read())
 
 
+def removing_empty(filename):
+    """Удаляем пустые словари
+    """
+    new_list = []
+    for item in filename:
+        if bool(item) is False:
+            continue
+        else:
+            new_list.append(item)
+    return new_list
+
+
