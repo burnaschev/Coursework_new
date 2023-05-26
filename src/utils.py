@@ -62,4 +62,4 @@ def get_five_operations(file):
                 print(f'{type_payment(i["to"])}')
             else:
                 print(f'{type_payment(i["from"])} -> {type_payment(i["to"])}')
-            print(cost)
+            print(cost, '\n')
