@@ -34,3 +34,11 @@ def type_payment(pay):
         return payment_type
 
 
+def sorted_date(file):
+    filename = load_jsonfile(file)
+    filename = removing_empty(filename)
+    date_ = [date for date in filename if 'date' in date]
+    date_.sort(key=itemgetter('date'), reverse=True)
+    return date_[0:5]
+
+
