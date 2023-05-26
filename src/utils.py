@@ -12,7 +12,7 @@ def load_jsonfile(filename):
 
 
 def removing_empty(filename):
-    """Удаляем пустые словари
+    """Пропускаем пустые словари
     """
     new_list = []
     for item in filename:
@@ -24,6 +24,8 @@ def removing_empty(filename):
 
 
 def type_payment(pay):
+    """Вывод счетов и карт в нужном формате
+    """
     if 'счёт' in pay.upper():
         return f'{pay[:5]}**{pay[-2:]}'
     else:
@@ -35,6 +37,8 @@ def type_payment(pay):
 
 
 def sorted_date(file):
+    """Сортировка списка по дате
+    """
     filename = load_jsonfile(file)
     filename = removing_empty(filename)
     date_ = [date for date in filename if 'date' in date]
@@ -43,6 +47,8 @@ def sorted_date(file):
 
 
 def get_five_operations(file):
+    """Получаем 5 последних
+    операций"""
     count = 0
     for i in file:
         if count == 5:
@@ -57,5 +63,3 @@ def get_five_operations(file):
             else:
                 print(f'{type_payment(i["from"])} -> {type_payment(i["to"])}')
             print(cost)
-
-
