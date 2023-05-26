@@ -39,7 +39,7 @@ def sorted_date(file):
     filename = removing_empty(filename)
     date_ = [date for date in filename if 'date' in date]
     date_.sort(key=itemgetter('date'), reverse=True)
-    return date_[0:5]
+    return date_[0:6]
 
 
 def get_five_operations(file):
