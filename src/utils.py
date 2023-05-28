@@ -26,8 +26,8 @@ def removing_empty(filename):
 def type_payment(pay):
     """Вывод счетов и карт в нужном формате
     """
-    if 'счёт' in pay.upper():
-        return f'{pay[:5]}**{pay[-2:]}'
+    if 'счет' in pay.lower():
+        return f'{pay[:5]}**{pay[-4:]}'
     else:
         payment_type: str = f'{pay.split()[len(pay.split()) - 1]}'
         card_type = f'{pay.replace(f" {payment_type}", "")}'
@@ -62,4 +62,4 @@ def get_five_operations(file):
                 print(f'{type_payment(i["to"])}')
             else:
                 print(f'{type_payment(i["from"])} -> {type_payment(i["to"])}')
-            print(cost)
+            print(cost, '\n')
